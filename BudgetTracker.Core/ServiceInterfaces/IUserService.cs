@@ -10,11 +10,12 @@ namespace BudgetTracker.Core.ServiceInterfaces
 {
     public interface IUserService
     {
-        Task<UserResponseModel> GetUserById(int id);
-        Task<IEnumerable<UserResponseModel>> GetAllUsers();
+        Task<UserDetailResponseModel> GetUserById(int id);
+        Task<UserDetailResponseModel> GetUserByName(string name);
+        Task<IEnumerable<UserResponseModel>> GetAllUsersasync();
         Task<UserResponseModel> AddUser(UserRequestModel model);
-        Task<UserResponseModel> UpdateUser(UserRequestModel model);
-        Task DeleteUser(UserRequestModel model);
+        Task<UserResponseModel> UpdateUser(UserRequestModel model, int id);
+        Task DeleteUser(int id);
 
     }
 }

@@ -12,7 +12,7 @@ namespace BudgetTracker.Core.models.Response
         public string FullName { get; set; }
         public decimal  TotalIncomes { get; set; }
         public decimal TotalExpenditures { get; set; }
-        public ICollection<Income> Incomes { get; set; }
-        public ICollection<User> Users { get; set; }
+        //public ICollection<Income> Incomes { get; set; }
+        //public ICollection<Expenditure> Expenditures { get; set; }
     }
 }

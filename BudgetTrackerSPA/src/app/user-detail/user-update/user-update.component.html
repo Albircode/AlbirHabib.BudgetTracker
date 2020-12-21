@@ -1,0 +1,57 @@
+<div class="container">
+
+    <div class="alert alert-danger" *ngIf="invalidInput"  role="alert">
+
+        Invalid email/password
+
+    </div>
+
+    <form class="user-form" (ngSubmit)="update()" #updateForm="ngForm">
+
+        <div class="form-title">
+
+            <h6 class="form-title-txt">Update User</h6>
+
+        </div>
+
+        <div class="mb-2">
+
+            <label for="fullname" class="form-label">FullName:</label>
+
+            <input class="form-control form-control-sm" type="text" placeholder="Enter Full Name" id="fullname" name = "fullname" [(ngModel)] = "userUpdate.fullname">
+
+          </div>
+
+        <div class="mb-2">
+
+          <label for="password" class="form-label">Password:</label>
+
+          <input type="password" placeholder="Enter Password" class="form-control form-control-sm" id="password" name="password" [(ngModel)]="userUpdate.password">
+
+        </div>
+
+        <div class="mb-2">
+
+            <label for="email" class="form-label">Email Id:</label>
+
+            <input type="email" placeholder="Enter Email Id" class="form-control form-control-sm" id="email" name = "email" [(ngModel)] = "userUpdate.email">
+
+        </div>
+
+
+
+        <div class="form-btn">
+
+            <div class="form-btn-div">
+
+                <button type="submit" class="btn btn-primary btn-sm shadow " value="submit" >Update</button>
+
+                <button type="reset" class="btn btn-light btn-sm shadow " value="reset">Clear</button>
+
+            </div>
+
+        </div>
+
+      </form>
+
+</div>

@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="alert alert-danger" *ngIf="invalidInput"  role="alert">
+        Invalid email/password
+    </div>   
+    <form class="user-form" (ngSubmit)="create()" #registerForm="ngForm">
+        <div class="form-title">
+            <h6 class="form-title-txt">Add New User</h6>
+        </div>
+        
+        <div class="mb-2">
+            <label for="fullname" class="form-label">FullName:</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Enter Full Name" id="fullname" name = "fullname" [(ngModel)] = "userCreate.fullName">
+          </div>
+        <div class="mb-2">
+          <label for="password" class="form-label">Password:</label>
+          <input type="password" placeholder="Enter Password" class="form-control form-control-sm" id="password" name="password" [(ngModel)]="userCreate.password">
+        </div>
+        <div class="mb-2">
+            <label for="email" class="form-label">Email Id:</label>
+            <input type="email" placeholder="Enter Email Id" class="form-control form-control-sm" id="email" name = "email" [(ngModel)] = "userCreate.email">
+        </div>
+
+        <div >
+            <div class="form-btn-div">
+                <button type="submit" class="btn btn-primary btn-sm shadow " value="submit" >Save</button>
+                <button type="reset" class="btn btn-light btn-sm shadow " value="reset">Clear</button>
+            </div>
+        </div>
+      </form>
+</div>

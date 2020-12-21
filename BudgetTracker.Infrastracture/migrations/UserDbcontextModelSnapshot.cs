@@ -111,15 +111,10 @@ namespace BudgetTracker.Infrastracture.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("nvarchar(10)");
 
-                    b.Property<int?>("UserId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.HasIndex("Email")
                         .IsUnique();
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("Users");
                 });
@@ -127,7 +122,7 @@ namespace BudgetTracker.Infrastracture.Migrations
             modelBuilder.Entity("BudgetTracker.Core.Entities.Expenditure", b =>
                 {
                     b.HasOne("BudgetTracker.Core.Entities.User", "User")
-                        .WithMany()
+                        .WithMany("Expenditures")
                         .HasForeignKey("UserId");
 
                     b.Navigation("User");
@@ -144,16 +139,9 @@ namespace BudgetTracker.Infrastracture.Migrations
 
             modelBuilder.Entity("BudgetTracker.Core.Entities.User", b =>
                 {
-                    b.HasOne("BudgetTracker.Core.Entities.User", null)
-                        .WithMany("Users")
-                        .HasForeignKey("UserId");
-                });
+                    b.Navigation("Expenditures");
 
-            modelBuilder.Entity("BudgetTracker.Core.Entities.User", b =>
-                {
                     b.Navigation("Incomes");
-
-                    b.Navigation("Users");
                 });
 #pragma warning restore 612, 618
         }

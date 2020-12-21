@@ -9,7 +9,9 @@ namespace BudgetTracker.Core.ServiceInterfaces
 {
    public interface IIncomeService
     {
-        Task<IEnumerable<IncomeResponseModel>> GetIncomeByUserId();
+        Task<IEnumerable<IncomeResponseModel>> GetIncomeByUserId(int id);
         Task<IncomeResponseModel> AddIncome(IncomeRequestModel model);
+        Task<IncomeResponseModel> UpdateIncome(IncomeRequestModel model, int id);
+        Task RemoveExpediture(int id);
     }
 }

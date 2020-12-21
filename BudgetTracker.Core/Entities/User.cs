@@ -11,8 +11,8 @@ namespace BudgetTracker.Core.Entities
         public string Password { get; set; }
         public string FullName { get; set; }
         public DateTime JoinedOn { get; set; }
-        public ICollection<Income> Incomes { get; set; }
-        public ICollection<Expenditure> Expenditures { get; set; }
+        public virtual ICollection<Income> Incomes { get; set; }
+        public virtual ICollection<Expenditure> Expenditures { get; set; }
 
     }
 }

@@ -19,13 +19,24 @@ namespace BudgetTracker.Infrastracture.Repositories
         }
         public async Task<User> GetUserByName(string name)
         {
-           var user = await _dbContext.Users.Include(u => u.Incomes).Include(u => u.Expenditures).
+           return await _dbContext.Users.Include(u => u.Incomes).Include(u => u.Expenditures).
                  FirstOrDefaultAsync(u => u.FullName == name);
-            if (user == null)
-            {
-                return null;
-            }
-            return user;
+           
+        }
+        public async Task<IEnumerable<User>> GetAllUsersasync()
+
+        {
+
+            var users = await _dbContext.Users.Include(u => u.Incomes).Include(u => u.Expenditures).ToListAsync();
+
+            return users;
+
+        }
+
+        public async Task<User> GetUserById(int id)
+        {
+            return await _dbContext.Users.Include(u => u.Incomes).Include(u => u.Expenditures).
+                 FirstOrDefaultAsync(u => u.Id == id);
         }
     }
 }

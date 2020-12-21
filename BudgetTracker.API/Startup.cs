@@ -1,4 +1,8 @@
+using BudgetTracker.Core.RepositoryInterfaces;
+using BudgetTracker.Core.ServiceInterfaces;
 using BudgetTracker.Infrastracture.Data;
+using BudgetTracker.Infrastracture.Repositories;
+using BudgetTracker.Infrastracture.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -30,6 +34,17 @@ namespace BudgetTracker.API
             services.AddDbContext<UserDbcontext>(options =>
 
                 options.UseSqlServer(Configuration.GetConnectionString(("UsersDbConnection"))));
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserRepository, UserRepository>();
+
+            services.AddScoped<IIncomeService, IncomeService>();
+            services.AddScoped<IIncomeRepository, IncomeRepository>();
+
+            services.AddScoped<IExpenditureService, ExpenditurService>();
+            services.AddScoped<IExpenditureRepository, ExpenditureRepository>();
+
+
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -39,6 +54,17 @@ namespace BudgetTracker.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseCors(builder =>
+
+            {
+
+                builder.WithOrigins(Configuration.GetValue<string>("clientSPAUrl")).AllowAnyHeader()
+
+                    .AllowAnyMethod()
+
+                    .AllowCredentials();
+
+            });
 
             app.UseRouting();
 

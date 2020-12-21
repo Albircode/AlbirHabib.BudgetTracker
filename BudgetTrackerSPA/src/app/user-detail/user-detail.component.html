@@ -1,0 +1,147 @@
+<div class="home-table" style="min-width: fit-content;">
+
+    <h2 class="h2-boarder-style">Account Detail</h2>
+
+    <div *ngIf="userDetails" class="detail-page-table-style">
+
+        <div id="left-table-header">
+
+            <div class="user-detail-info-title">
+
+                <p class="font-weight-bold" style="display: inline-block;">Name: </p>
+
+                {{userDetails.fullname}}
+
+                <button class="btn btn-primary btn-sm" [routerLink]="['update']" >Update User</button>
+
+            </div>
+
+            <div class="user-detail-info-money">
+
+                <p>Income: </p> {{userDetails.TotalIncomes|currency : 'USD' : 'symbol' : '1.2-2'}}
+
+                <button class="btn btn-primary btn-sm" [routerLink]="['income', { 'userName': userDetails.fullname }]" >Add Income</button>
+
+            </div>
+
+            <table id="left-table-small-size" class="table table-sm" >
+
+                <thead>
+
+                  <tr>
+
+                    <th scope="col" style="border-top: none">S.N.</th>
+
+                    <th scope="col" style="border-top: none">Amount</th>
+
+                    <th scope="col" style="border-top: none">Description</th>
+
+                    <th scope="col" style="border-top: none">Date</th>
+
+                    <th scope="col" style="border-top: none">Remarks</th>
+
+                    <th scope="col" style="border-top: none"></th>
+
+                    <th scope="col" style="border-top: none"></th>
+
+                  </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let income of userDetails.incomes; let i = index">
+
+                        <th scope="row">{{i+1}}</th>
+
+                        <td>{{income.amount|currency : 'USD' : '' : '1.2-2'}}</td>
+
+                        <td>{{income.description}}</td>
+
+                        <td>{{income.incomeDate | date: 'MM/dd/yyyy'}}</td>
+
+                        <td>{{income.remarks}}</td>
+
+                        <td><button type="button" class="btn btn-secondary btn-sm" [routerLink]="['updateincome', { 'incomeId': income.id }]" >Update</button></td>
+
+                        <td><button type="button" class="btn btn-warning btn-sm" (click)="deleteIncome(income.id)">Delete</button></td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+        <div id="right-table-header">
+
+            <div class="user-detail-info-title">
+
+                <p class="font-weight-bold" style="display: inline-block;">Email Id: </p>
+
+                {{userDetails.email}}
+
+            </div>
+
+            <div class="user-detail-info-money">
+
+                <p >Total expenditures:</p> {{userDetails.totalExpenditures|currency : 'USD'}}
+
+                <button class="btn btn-danger btn-sm" [routerLink]="['expenditure', { 'userName': userDetails.fullname }]" >Add Expense</button>
+
+            </div>
+
+            <table class="table table-sm">
+
+                <thead>
+
+                  <tr>
+
+                    <th scope="col" style="border-top: none">S.N.</th>
+
+                    <th scope="col" style="border-top: none">Amount</th>
+
+                    <th scope="col" style="border-top: none">Description</th>
+
+                    <th scope="col" style="border-top: none">Date</th>
+
+                    <th scope="col" style="border-top: none">Remarks</th>
+
+                    <th scope="col" style="border-top: none"></th>
+
+                    <th scope="col" style="border-top: none"></th>
+
+                   </tr>
+
+                </thead>
+
+                <tbody>
+
+                    <tr *ngFor="let exp of userDetails.expenditures; let i = index">
+
+                        <th scope="row">{{i+1}}</th>
+
+                        <td>{{exp.amount|currency : 'USD' : '' : '1.2-2'}}</td>
+
+                        <td>{{exp.description}}</td>
+
+                        <td>{{exp.expDate | date: 'MM/dd/yyyy'}}</td>
+
+                        <td>{{exp.remarks}}</td>
+
+                        <td><button type="button" class="btn btn-secondary btn-sm" [routerLink]="['updateexpense', { 'expId': exp.id }]" >Update</button></td>
+
+                        <td><button type="button" class="btn btn-warning btn-sm" (click)="deleteExpenditure(exp.id)">Delete</button></td>
+
+                    </tr>
+
+                </tbody>
+
+              </table>
+
+        </div>
+
+    </div>
+
+</div>

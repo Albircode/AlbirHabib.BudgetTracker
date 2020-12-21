@@ -9,5 +9,8 @@ namespace BudgetTracker.Core.RepositoryInterfaces
    public interface IUserRepository : IAsyncRepository<User>
     {
         Task<User> GetUserByName(string name);
+        Task<User> GetUserById(int id);
+
+        Task<IEnumerable<User>> GetAllUsersasync();
     }
 }

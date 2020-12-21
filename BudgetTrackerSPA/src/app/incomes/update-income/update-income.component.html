@@ -1,0 +1,33 @@
+<div class="container">
+    <div class="alert alert-danger" *ngIf="invalidInput"  role="alert">
+        Amount/Date cannot be empty!
+    </div>  
+    <form  (ngSubmit)="update()" #incomeUpdateForm="ngForm">
+        <div class="form-title">
+            <h6 class="form-title-txt">Update Income</h6>
+        </div>
+        <div class="mb-2">
+            <label for="amount" class="form-label">Amount:</label>
+            <input class="form-control form-control-sm" type="text" placeholder="Enter Amount" id="amount" name = "amount" [(ngModel)] = "incomeUpdate.amount">
+          </div>
+        <div class="mb-2">
+          <label for="description" class="form-label">Description:</label>
+          <input type="text" placeholder="Enter Description" class="form-control form-control-sm" id="description" name = "description" [(ngModel)] = "incomeUpdate.description">
+        </div>
+        <div class="mb-2">
+            <label for="date" class="form-label">Date:</label>
+            <input type="date" class="form-control form-control-sm" id="date" name = "date" [(ngModel)] = "incomeUpdate.date">
+        </div>
+        <div class="mb-2">
+            <label for="remarks" class="form-label">Remarks:</label>
+            <textarea class="form-control" id="remarks" rows="2" name = "remarks" [(ngModel)] = "incomeUpdate.remarks"></textarea>
+        </div>
+
+        <div class="form-btn">
+            <div class="form-btn-div">
+                <button type="submit" class="btn btn-primary btn-sm shadow " value="submit" >Save</button>
+                <button type="reset" class="btn btn-light btn-sm shadow " value="reset">Clear</button>
+            </div>
+        </div>
+      </form>
+</div>

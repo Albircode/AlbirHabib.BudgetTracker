@@ -11,5 +11,9 @@ namespace BudgetTracker.Core.ServiceInterfaces
     {
         Task<IEnumerable<ExpenditureResponseModel>> GetExpendituresByUserId(int id);
         Task<ExpenditureResponseModel> AddExpediture(ExpenditureRequestModel model);
+        Task<ExpenditureResponseModel> UpdateExpediture(ExpenditureRequestModel model, int id);
+        Task RemoveExpediture(int id);
+
+
     }
 }
